@@ -1,0 +1,38 @@
+{
+  "claim_limit": "changed material pairs born through local catalysis and faithfully copied by changed descendants; not spontaneous origin, competitive selection, adaptation, metabolism or intelligence",
+  "conditions": [
+    "intact",
+    "inactive",
+    "v2"
+  ],
+  "initialization": "scattered particles with designed active chemistry and one arranged source bond",
+  "interventions_after_initialization": [],
+  "law": "v3: one endpoint mismatch has 1/16 contact catalytic rate; two mismatches rejected",
+  "minimum_catalytic_generations": 3,
+  "minimum_faithful_mutant_births": 1,
+  "minimum_independent_descendant_births": 1,
+  "minimum_mutations": 1,
+  "minimum_products": 8,
+  "particles": 350,
+  "seeds": [
+    41,
+    42
+  ],
+  "separation": "all source and product atoms beyond five toroidal steps of both original-source atoms at birth",
+  "space": [
+    8,
+    8,
+    8
+  ],
+  "ticks": 2048,
+  "variants": [
+    [
+      0,
+      1
+    ],
+    [
+      2,
+      3
+    ]
+  ]
+}

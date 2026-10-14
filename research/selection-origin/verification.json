@@ -1,0 +1,17 @@
+{
+  "completed": true,
+  "trajectories": 40,
+  "selection_gate_supported": false,
+  "selection_contrasts_pass": 4,
+  "spontaneous_material_autocatalysis_supported": true,
+  "origin_catalytic_births": 333.0,
+  "origin_births_min": 80.0,
+  "origin_births_max": 88.0,
+  "origin_depth_min": 3.0,
+  "origin_depth_max": 5.0,
+  "spontaneous_life_demonstrated": false,
+  "open_ended_evolution_demonstrated": false,
+  "intelligence_demonstrated": false,
+  "civilizations_demonstrated": false,
+  "energy_checks_pass": true
+}

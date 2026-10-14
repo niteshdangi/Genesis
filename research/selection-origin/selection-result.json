@@ -1,0 +1,1710 @@
+{
+  "adaptation_demonstrated": false,
+  "completed": true,
+  "contrasts": [
+    {
+      "favor01": 6.5,
+      "favor03": -10.0,
+      "neutral": 3.0,
+      "pass": true,
+      "seed": 61
+    },
+    {
+      "favor01": 42.0,
+      "favor03": -19.0,
+      "neutral": 4.0,
+      "pass": true,
+      "seed": 62
+    },
+    {
+      "favor01": 42.5,
+      "favor03": -32.0,
+      "neutral": 21.5,
+      "pass": true,
+      "seed": 63
+    },
+    {
+      "favor01": 14.5,
+      "favor03": -13.5,
+      "neutral": -6.0,
+      "pass": true,
+      "seed": 64
+    }
+  ],
+  "open_ended_evolution_demonstrated": false,
+  "rows": [
+    {
+      "catalytic_births": 57,
+      "condition": "favor-01",
+      "counts": [
+        45,
+        12
+      ],
+      "depths": [
+        5,
+        5
+      ],
+      "faithful_descendant_signature_births": 50,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 45,
+        "1": 12
+      },
+      "maximum_depth": 5,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 59,
+        "chunks": 1,
+        "components": 291,
+        "energy_input": "86505",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17702",
+        "heat": "27185",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1727,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 232,
+          "2": 59
+        },
+        "structural_energy": "468",
+        "total_energy": "45355"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "c967097faa7eea74fbbd5cdf8d5e1729916687e3f1566559a17cd503052139c3",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 61,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 48,
+      "condition": "favor-03",
+      "counts": [
+        21,
+        27
+      ],
+      "depths": [
+        6,
+        7
+      ],
+      "faithful_descendant_signature_births": 40,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 21,
+        "1": 27
+      },
+      "maximum_depth": 7,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 50,
+        "chunks": 1,
+        "components": 300,
+        "energy_input": "86381",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17669",
+        "heat": "27112",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1743,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 250,
+          "2": 50
+        },
+        "structural_energy": "450",
+        "total_energy": "45231"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "05e661d596ffea937313d6d93000600827c663b7b5b8ccceaa2a21378f6caf60",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 61,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 50,
+      "condition": "neutral",
+      "counts": [
+        30,
+        20
+      ],
+      "depths": [
+        5,
+        5
+      ],
+      "faithful_descendant_signature_births": 42,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 30,
+        "1": 20
+      },
+      "maximum_depth": 5,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 52,
+        "chunks": 1,
+        "components": 298,
+        "energy_input": "86457",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17636",
+        "heat": "27217",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1731,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 246,
+          "2": 52
+        },
+        "structural_energy": "454",
+        "total_energy": "45307"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "7293d35dcb702eb8da013e1ad102d875474fbbbea2c5fcee7afd79b149dd45ce",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 61,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 0,
+      "condition": "inactive",
+      "counts": [
+        0,
+        0
+      ],
+      "depths": [
+        0,
+        0
+      ],
+      "faithful_descendant_signature_births": 0,
+      "initial_energy": "8002",
+      "live_lineage": {},
+      "maximum_depth": 0,
+      "metrics": {
+        "active_conformations": 346,
+        "backend": "cpu-reference",
+        "bonds": 2,
+        "chunks": 1,
+        "components": 348,
+        "energy_input": "86413",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17686",
+        "heat": "27227",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1740,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 346,
+          "2": 2
+        },
+        "structural_energy": "350",
+        "total_energy": "45263"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "a17405ea3ba5b6312c001f80164a0999ab163683cd796b64f33390583436f894",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 61,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 50,
+      "condition": "favor-01",
+      "counts": [
+        15,
+        35
+      ],
+      "depths": [
+        5,
+        6
+      ],
+      "faithful_descendant_signature_births": 42,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 15,
+        "1": 35
+      },
+      "maximum_depth": 6,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 52,
+        "chunks": 1,
+        "components": 298,
+        "energy_input": "86457",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17689",
+        "heat": "27164",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1744,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 246,
+          "2": 52
+        },
+        "structural_energy": "454",
+        "total_energy": "45307"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "ffe047d467fccb199100d5a0350fdecc7dec567383094c87697273cb2a05f44d",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 61,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 58,
+      "condition": "favor-03",
+      "counts": [
+        22,
+        36
+      ],
+      "depths": [
+        5,
+        6
+      ],
+      "faithful_descendant_signature_births": 51,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 22,
+        "1": 36
+      },
+      "maximum_depth": 6,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 60,
+        "chunks": 1,
+        "components": 290,
+        "energy_input": "86376",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17612",
+        "heat": "27144",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1742,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 230,
+          "2": 60
+        },
+        "structural_energy": "470",
+        "total_energy": "45226"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "dc20f747589dda7fb2ebf21e36c6745b26fb7ecfe0dc8da1da15ed35007b018b",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 61,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 48,
+      "condition": "neutral",
+      "counts": [
+        22,
+        26
+      ],
+      "depths": [
+        6,
+        5
+      ],
+      "faithful_descendant_signature_births": 38,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 22,
+        "1": 26
+      },
+      "maximum_depth": 6,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 50,
+        "chunks": 1,
+        "components": 300,
+        "energy_input": "86540",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17695",
+        "heat": "27245",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1738,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 250,
+          "2": 50
+        },
+        "structural_energy": "450",
+        "total_energy": "45390"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "eb8f5e29db34d84eee592fb4cf36422cf26cb083d468c56bb8a23e5169bc2f14",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 61,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 0,
+      "condition": "inactive",
+      "counts": [
+        0,
+        0
+      ],
+      "depths": [
+        0,
+        0
+      ],
+      "faithful_descendant_signature_births": 0,
+      "initial_energy": "8002",
+      "live_lineage": {},
+      "maximum_depth": 0,
+      "metrics": {
+        "active_conformations": 346,
+        "backend": "cpu-reference",
+        "bonds": 2,
+        "chunks": 1,
+        "components": 348,
+        "energy_input": "86431",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17689",
+        "heat": "27242",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1750,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 346,
+          "2": 2
+        },
+        "structural_energy": "350",
+        "total_energy": "45281"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "f0b1ac5c9b6c12f34c9b7555c982cdfc582cf427ef9d6b79373ad2a1b36d856c",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 61,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 71,
+      "condition": "favor-01",
+      "counts": [
+        63,
+        8
+      ],
+      "depths": [
+        8,
+        3
+      ],
+      "faithful_descendant_signature_births": 65,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 63,
+        "1": 8
+      },
+      "maximum_depth": 8,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 73,
+        "chunks": 1,
+        "components": 277,
+        "energy_input": "88008",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18354",
+        "heat": "28008",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1674,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 204,
+          "2": 73
+        },
+        "structural_energy": "496",
+        "total_energy": "46858"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "10623e6c12eb0b6c80ee8b0fe2e133e9b5eb3cb92775df2e82cc0628128b9bfb",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 62,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 74,
+      "condition": "favor-03",
+      "counts": [
+        24,
+        50
+      ],
+      "depths": [
+        4,
+        7
+      ],
+      "faithful_descendant_signature_births": 65,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 24,
+        "1": 50
+      },
+      "maximum_depth": 7,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 76,
+        "chunks": 1,
+        "components": 274,
+        "energy_input": "88034",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18354",
+        "heat": "28028",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1663,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 198,
+          "2": 76
+        },
+        "structural_energy": "502",
+        "total_energy": "46884"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "bd8e7de0a15b332053f1ba7667d572aecea9dfa6ddea989472f623b604bf37f5",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 62,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 51,
+      "condition": "neutral",
+      "counts": [
+        31,
+        20
+      ],
+      "depths": [
+        6,
+        5
+      ],
+      "faithful_descendant_signature_births": 45,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 31,
+        "1": 20
+      },
+      "maximum_depth": 6,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 53,
+        "chunks": 1,
+        "components": 297,
+        "energy_input": "88071",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18361",
+        "heat": "28104",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1663,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 244,
+          "2": 53
+        },
+        "structural_energy": "456",
+        "total_energy": "46921"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "352fd9afa2bae4caaaca4b3d49d383ab9e61dc346ffcb1f5d96c6ba6fe9d7467",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 62,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 0,
+      "condition": "inactive",
+      "counts": [
+        0,
+        0
+      ],
+      "depths": [
+        0,
+        0
+      ],
+      "faithful_descendant_signature_births": 0,
+      "initial_energy": "8002",
+      "live_lineage": {},
+      "maximum_depth": 0,
+      "metrics": {
+        "active_conformations": 346,
+        "backend": "cpu-reference",
+        "bonds": 2,
+        "chunks": 1,
+        "components": 348,
+        "energy_input": "87514",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18153",
+        "heat": "27861",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1661,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 346,
+          "2": 2
+        },
+        "structural_energy": "350",
+        "total_energy": "46364"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "3393174ad21a51bff28add2f7f130e8f514997cc2557f19545e637ee5737fd9e",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 62,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 71,
+      "condition": "favor-01",
+      "counts": [
+        50,
+        21
+      ],
+      "depths": [
+        7,
+        5
+      ],
+      "faithful_descendant_signature_births": 62,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 50,
+        "1": 21
+      },
+      "maximum_depth": 7,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 73,
+        "chunks": 1,
+        "components": 277,
+        "energy_input": "88506",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18551",
+        "heat": "28309",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1677,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 204,
+          "2": 73
+        },
+        "structural_energy": "496",
+        "total_energy": "47356"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "8bcfd046d7f2cc1a8eb0128b3a5231fd454d62810920dab60a760af1b234f6c6",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 62,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 76,
+      "condition": "favor-03",
+      "counts": [
+        32,
+        44
+      ],
+      "depths": [
+        5,
+        7
+      ],
+      "faithful_descendant_signature_births": 67,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 32,
+        "1": 44
+      },
+      "maximum_depth": 7,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 78,
+        "chunks": 1,
+        "components": 272,
+        "energy_input": "88380",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18485",
+        "heat": "28239",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1699,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 194,
+          "2": 78
+        },
+        "structural_energy": "506",
+        "total_energy": "47230"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "e02b898c85a6e04c7186efcbe2b2cc8093be8e76b94fb5af3fa553c7e6da8359",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 62,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 61,
+      "condition": "neutral",
+      "counts": [
+        29,
+        32
+      ],
+      "depths": [
+        8,
+        6
+      ],
+      "faithful_descendant_signature_births": 52,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 29,
+        "1": 32
+      },
+      "maximum_depth": 8,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 63,
+        "chunks": 1,
+        "components": 287,
+        "energy_input": "88396",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18504",
+        "heat": "28266",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1679,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 224,
+          "2": 63
+        },
+        "structural_energy": "476",
+        "total_energy": "47246"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "1fe7a5385ce3bf0a943873e9d4e0a3f82f98de3af3af0d9b1fe6759fa29dfb23",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 62,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 0,
+      "condition": "inactive",
+      "counts": [
+        0,
+        0
+      ],
+      "depths": [
+        0,
+        0
+      ],
+      "faithful_descendant_signature_births": 0,
+      "initial_energy": "8002",
+      "live_lineage": {},
+      "maximum_depth": 0,
+      "metrics": {
+        "active_conformations": 346,
+        "backend": "cpu-reference",
+        "bonds": 2,
+        "chunks": 1,
+        "components": 348,
+        "energy_input": "87544",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18166",
+        "heat": "27878",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1666,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 346,
+          "2": 2
+        },
+        "structural_energy": "350",
+        "total_energy": "46394"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "7d96a936293aad8c4c11adefa678b071f59d56479f49b4ec5e6da8685c9e7e18",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 62,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 36,
+      "condition": "favor-01",
+      "counts": [
+        35,
+        1
+      ],
+      "depths": [
+        7,
+        1
+      ],
+      "faithful_descendant_signature_births": 32,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 35,
+        "1": 1
+      },
+      "maximum_depth": 7,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 38,
+        "chunks": 1,
+        "components": 312,
+        "energy_input": "88275",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18453",
+        "heat": "28246",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1670,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 274,
+          "2": 38
+        },
+        "structural_energy": "426",
+        "total_energy": "47125"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "188abf2bace90c200f21bce27bd761118e1fc7a7bbbe26471b5472e81f776573",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 63,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 80,
+      "condition": "favor-03",
+      "counts": [
+        24,
+        56
+      ],
+      "depths": [
+        6,
+        6
+      ],
+      "faithful_descendant_signature_births": 69,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 24,
+        "1": 56
+      },
+      "maximum_depth": 6,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 82,
+        "chunks": 1,
+        "components": 268,
+        "energy_input": "88388",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18499",
+        "heat": "28225",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1689,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 186,
+          "2": 82
+        },
+        "structural_energy": "514",
+        "total_energy": "47238"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "9fac1e4914163195787eeb3c7bdd8a784ae1c42eadb633053f5d4d38861151b9",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 63,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 40,
+      "condition": "neutral",
+      "counts": [
+        30,
+        10
+      ],
+      "depths": [
+        6,
+        4
+      ],
+      "faithful_descendant_signature_births": 34,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 30,
+        "1": 10
+      },
+      "maximum_depth": 6,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 42,
+        "chunks": 1,
+        "components": 308,
+        "energy_input": "88360",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18512",
+        "heat": "28264",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1679,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 266,
+          "2": 42
+        },
+        "structural_energy": "434",
+        "total_energy": "47210"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "39ba84736b2aedb2b650e2748b8c362282ff0e899dda84c4b7926c62b1a2ef55",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 63,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 0,
+      "condition": "inactive",
+      "counts": [
+        0,
+        0
+      ],
+      "depths": [
+        0,
+        0
+      ],
+      "faithful_descendant_signature_births": 0,
+      "initial_energy": "8002",
+      "live_lineage": {},
+      "maximum_depth": 0,
+      "metrics": {
+        "active_conformations": 346,
+        "backend": "cpu-reference",
+        "bonds": 2,
+        "chunks": 1,
+        "components": 348,
+        "energy_input": "87994",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18378",
+        "heat": "28116",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1674,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 346,
+          "2": 2
+        },
+        "structural_energy": "350",
+        "total_energy": "46844"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "c415a9c9e83a942c5dc9a4570a4bf0b68d6e78407dd7b35724e70681aee027fd",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 63,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 55,
+      "condition": "favor-01",
+      "counts": [
+        53,
+        2
+      ],
+      "depths": [
+        6,
+        1
+      ],
+      "faithful_descendant_signature_births": 47,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 53,
+        "1": 2
+      },
+      "maximum_depth": 6,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 57,
+        "chunks": 1,
+        "components": 293,
+        "energy_input": "88434",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18505",
+        "heat": "28315",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1677,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 236,
+          "2": 57
+        },
+        "structural_energy": "464",
+        "total_energy": "47284"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "7b5915912eacd76253755cf29ec303fa56c0f2d90a7f97eda521844e2559aabb",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 63,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 78,
+      "condition": "favor-03",
+      "counts": [
+        23,
+        55
+      ],
+      "depths": [
+        5,
+        6
+      ],
+      "faithful_descendant_signature_births": 66,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 23,
+        "1": 55
+      },
+      "maximum_depth": 6,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 80,
+        "chunks": 1,
+        "components": 270,
+        "energy_input": "88417",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18472",
+        "heat": "28285",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1678,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 190,
+          "2": 80
+        },
+        "structural_energy": "510",
+        "total_energy": "47267"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "eaa045ef75007561df9c7c5cac2eeb90a60b7cedbec93f918f949b32822a8dba",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 63,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 65,
+      "condition": "neutral",
+      "counts": [
+        44,
+        21
+      ],
+      "depths": [
+        5,
+        4
+      ],
+      "faithful_descendant_signature_births": 56,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 44,
+        "1": 21
+      },
+      "maximum_depth": 5,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 67,
+        "chunks": 1,
+        "components": 283,
+        "energy_input": "88480",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18547",
+        "heat": "28299",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1678,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 216,
+          "2": 67
+        },
+        "structural_energy": "484",
+        "total_energy": "47330"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "8c4f0cc81c2949e49e388b137454d5669b2d74975c69c2c78dfe3d78b7fa4329",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 63,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 0,
+      "condition": "inactive",
+      "counts": [
+        0,
+        0
+      ],
+      "depths": [
+        0,
+        0
+      ],
+      "faithful_descendant_signature_births": 0,
+      "initial_energy": "8002",
+      "live_lineage": {},
+      "maximum_depth": 0,
+      "metrics": {
+        "active_conformations": 346,
+        "backend": "cpu-reference",
+        "bonds": 2,
+        "chunks": 1,
+        "components": 348,
+        "energy_input": "87815",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "18272",
+        "heat": "28043",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1673,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 346,
+          "2": 2
+        },
+        "structural_energy": "350",
+        "total_energy": "46665"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "68ababf7c89e2c66ad168ae071a884e124acbb53bd626586de359fb8fbf0a797",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 63,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 56,
+      "condition": "favor-01",
+      "counts": [
+        28,
+        28
+      ],
+      "depths": [
+        7,
+        6
+      ],
+      "faithful_descendant_signature_births": 45,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 28,
+        "1": 28
+      },
+      "maximum_depth": 7,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 58,
+        "chunks": 1,
+        "components": 292,
+        "energy_input": "86437",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17620",
+        "heat": "27201",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1731,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 234,
+          "2": 58
+        },
+        "structural_energy": "466",
+        "total_energy": "45287"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "e48940d53ec7f74b386258364dd6e0beca2c22eef493fa828ac19000dc2fd9f2",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 64,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 32,
+      "condition": "favor-03",
+      "counts": [
+        9,
+        23
+      ],
+      "depths": [
+        3,
+        6
+      ],
+      "faithful_descendant_signature_births": 24,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 9,
+        "1": 23
+      },
+      "maximum_depth": 6,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 34,
+        "chunks": 1,
+        "components": 316,
+        "energy_input": "86514",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17680",
+        "heat": "27266",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1732,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 282,
+          "2": 34
+        },
+        "structural_energy": "418",
+        "total_energy": "45364"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "8bb74d014c5d9be07e47f061a8b6a863a3cdf4457daa08cc982d2931b980c776",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 64,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 50,
+      "condition": "neutral",
+      "counts": [
+        22,
+        28
+      ],
+      "depths": [
+        5,
+        5
+      ],
+      "faithful_descendant_signature_births": 41,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 22,
+        "1": 28
+      },
+      "maximum_depth": 5,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 52,
+        "chunks": 1,
+        "components": 298,
+        "energy_input": "86480",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17663",
+        "heat": "27213",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1729,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 246,
+          "2": 52
+        },
+        "structural_energy": "454",
+        "total_energy": "45330"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "8cb5bc31af5dc0a9cdd0af92725ed68265be49b8801a6db9c5748c1b12bc8ade",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 64,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 0,
+      "condition": "inactive",
+      "counts": [
+        0,
+        0
+      ],
+      "depths": [
+        0,
+        0
+      ],
+      "faithful_descendant_signature_births": 0,
+      "initial_energy": "8002",
+      "live_lineage": {},
+      "maximum_depth": 0,
+      "metrics": {
+        "active_conformations": 346,
+        "backend": "cpu-reference",
+        "bonds": 2,
+        "chunks": 1,
+        "components": 348,
+        "energy_input": "86430",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17696",
+        "heat": "27234",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1722,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 346,
+          "2": 2
+        },
+        "structural_energy": "350",
+        "total_energy": "45280"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "f56f7f06c7476adade488dad5bff4344b8a2b6c1079c37eb9b6a2f987d29bd29",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 64,
+      "signature_changes": 0,
+      "swap": false
+    },
+    {
+      "catalytic_births": 53,
+      "condition": "favor-01",
+      "counts": [
+        41,
+        12
+      ],
+      "depths": [
+        6,
+        5
+      ],
+      "faithful_descendant_signature_births": 46,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 41,
+        "1": 12
+      },
+      "maximum_depth": 6,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 55,
+        "chunks": 1,
+        "components": 295,
+        "energy_input": "86361",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17601",
+        "heat": "27150",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1732,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 240,
+          "2": 55
+        },
+        "structural_energy": "460",
+        "total_energy": "45211"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "64b5f8baf1324ccd4803ec0bf2d8f50dcac7b9d34f1bce8c85cb1850966a99a6",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 64,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 67,
+      "condition": "favor-03",
+      "counts": [
+        27,
+        40
+      ],
+      "depths": [
+        5,
+        8
+      ],
+      "faithful_descendant_signature_births": 59,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 27,
+        "1": 40
+      },
+      "maximum_depth": 8,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 69,
+        "chunks": 1,
+        "components": 281,
+        "energy_input": "86513",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17654",
+        "heat": "27221",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1729,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 212,
+          "2": 69
+        },
+        "structural_energy": "488",
+        "total_energy": "45363"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "efb088ceae7da8d48c8211836b2ce92e746b3f96d74142af5e940b2b20edde74",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 64,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 56,
+      "condition": "neutral",
+      "counts": [
+        25,
+        31
+      ],
+      "depths": [
+        4,
+        5
+      ],
+      "faithful_descendant_signature_births": 46,
+      "initial_energy": "8002",
+      "live_lineage": {
+        "0": 25,
+        "1": 31
+      },
+      "maximum_depth": 5,
+      "metrics": {
+        "active_conformations": 350,
+        "backend": "cpu-reference",
+        "bonds": 58,
+        "chunks": 1,
+        "components": 292,
+        "energy_input": "86416",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17636",
+        "heat": "27164",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1747,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 234,
+          "2": 58
+        },
+        "structural_energy": "466",
+        "total_energy": "45266"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "3133d515cc309ba1beaf9b1575539dc33914b6dfb6d48481e760cde61e285be9",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 64,
+      "signature_changes": 0,
+      "swap": true
+    },
+    {
+      "catalytic_births": 0,
+      "condition": "inactive",
+      "counts": [
+        0,
+        0
+      ],
+      "depths": [
+        0,
+        0
+      ],
+      "faithful_descendant_signature_births": 0,
+      "initial_energy": "8002",
+      "live_lineage": {},
+      "maximum_depth": 0,
+      "metrics": {
+        "active_conformations": 346,
+        "backend": "cpu-reference",
+        "bonds": 2,
+        "chunks": 1,
+        "components": 348,
+        "energy_input": "86341",
+        "energy_output": "49152",
+        "events_truncated": false,
+        "excitation": "17646",
+        "heat": "27195",
+        "interpretation": "components are material structures; no organism or cognition classification",
+        "largest_component": 2,
+        "law_version": 2,
+        "particles": 350,
+        "retained_events": 1743,
+        "semantics": "genesis-local-matter-3d-v2",
+        "size_distribution": {
+          "1": 346,
+          "2": 2
+        },
+        "structural_energy": "350",
+        "total_energy": "45191"
+      },
+      "ordinary_nucleations": 0,
+      "origin": false,
+      "replay": {
+        "digest": "4940e122af0bd57816aa5813ad2ab469e0937cb90df25fa35ce44e8503687331",
+        "generation": "768",
+        "matching_checkpoints": 7
+      },
+      "seed": 64,
+      "signature_changes": 0,
+      "swap": true
+    }
+  ],
+  "supported": false
+}

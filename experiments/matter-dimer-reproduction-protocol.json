@@ -1,0 +1,11 @@
+{
+  "warmup":500,
+  "stability":20,
+  "horizon":256,
+  "persistence":20,
+  "replicas":4,
+  "candidates":1,
+  "min_size":2,
+  "max_size":2,
+  "archive_limit_mib":256
+}

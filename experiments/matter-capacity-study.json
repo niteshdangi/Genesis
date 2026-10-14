@@ -1,0 +1,7 @@
+{
+  "runs": [
+    {"name": "matter-16-reference", "spec": {"kind": "matter", "config": {"space": {"width": 16, "height": 16, "depth": 16}, "particles": 750, "seed": 1}}, "options": {"steps": 10000}},
+    {"name": "matter-32-reference", "spec": {"kind": "matter", "config": {"space": {"width": 32, "height": 32, "depth": 32}, "particles": 6000, "seed": 1}}, "options": {"steps": 10000}},
+    {"name": "matter-32-parallel", "spec": {"kind": "matter", "config": {"space": {"width": 32, "height": 32, "depth": 32}, "particles": 6000, "seed": 1, "execution": {"parallel": true}}}, "options": {"steps": 10000}}
+  ]
+}

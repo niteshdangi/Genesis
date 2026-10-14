@@ -1,0 +1,38 @@
+{
+  "claim_limits": [
+    "seeded selection among supplied traits, not evolved fitness",
+    "unseeded material autocatalysis, not spontaneous life",
+    "finite dimer repertoire, not open-ended evolution",
+    "all outcomes retained; no threshold relaxation"
+  ],
+  "conditions": [
+    "favor-01",
+    "favor-03",
+    "neutral",
+    "inactive"
+  ],
+  "origin_conditions": [
+    "active",
+    "disabled"
+  ],
+  "origin_gate": "at least three catalytic generations and ten catalytic births in every active seed, with more catalytic births than paired disabled control",
+  "origin_seeds": [
+    81,
+    82,
+    83,
+    84
+  ],
+  "origin_ticks": 2048,
+  "selection_gate": "both lineages depth >=3 in each active run; each seed's swapped mean favors 01 under favor-01 and 03 under favor-03; reversal changes mean 01-minus-03 by at least 4; inactive controls zero; neutral means descriptive",
+  "selection_seeds": [
+    61,
+    62,
+    63,
+    64
+  ],
+  "selection_ticks": 768,
+  "swaps": [
+    false,
+    true
+  ]
+}

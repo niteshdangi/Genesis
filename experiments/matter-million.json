@@ -1,0 +1,9 @@
+{
+  "kind": "matter",
+  "config": {
+    "space": {"width":128,"height":128,"depth":128},
+    "particles":1000000,
+    "seed":37,
+    "execution": {"memory_limit_mib":8192,"event_limit":2000000,"full_provenance":true,"parallel":false,"gpu_fields":false}
+  }
+}

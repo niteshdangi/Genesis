@@ -1,0 +1,17 @@
+{
+  "kind": "matter",
+  "config": {
+    "space": {"width": 32, "height": 32, "depth": 32},
+    "seed": 1,
+    "particles": 6000,
+    "initial_heat": 4,
+    "initial_excitation": 2,
+    "bond_energy": 2,
+    "binding_rate": 160000,
+    "breaking_rate": 5000,
+    "motion_rate": 700000,
+    "exchange_rate": 300000,
+    "reservoir": {"enabled": true, "input_per_site": 2, "sink_per_site": 1, "capacity": 64},
+    "execution": {"parallel": false, "gpu_fields": false, "cpu_fallback": true, "memory_limit_mib": 512, "event_limit": 200000, "full_provenance": true}
+  }
+}

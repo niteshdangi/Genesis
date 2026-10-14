@@ -1,0 +1,9 @@
+{
+  "steps": 10000,
+  "checkpoint_every": 1000,
+  "sample_every": 100,
+  "revision": "unrecorded",
+  "label": "unseeded-matter",
+  "interventions": [],
+  "archive_limit_mib": 4096
+}

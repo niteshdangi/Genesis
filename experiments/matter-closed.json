@@ -1,0 +1,10 @@
+{
+  "kind": "matter",
+  "config": {
+    "space": {"width": 32, "height": 32, "depth": 32},
+    "seed": 1,
+    "particles": 6000,
+    "reservoir": {"enabled": false},
+    "execution": {"parallel": false, "gpu_fields": false, "full_provenance": true}
+  }
+}

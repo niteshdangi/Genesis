@@ -1,0 +1,7 @@
+{
+  "kind": "matter",
+  "config": {
+    "seed": 1,
+    "execution": {"parallel": true, "gpu_fields": true, "cpu_fallback": false, "full_provenance": true}
+  }
+}

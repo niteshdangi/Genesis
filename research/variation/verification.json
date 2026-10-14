@@ -1,0 +1,18 @@
+{
+  "completed": true,
+  "capability_supported": true,
+  "trajectories": 12,
+  "replays": 12,
+  "v3_active_trajectories": 4,
+  "products": 677.0,
+  "signature_changes": 312.0,
+  "faithful_mutant_births": 279.0,
+  "catalytic_generation_min": 10.0,
+  "catalytic_generation_max": 12.0,
+  "inactive_controls": 4,
+  "v2_controls": 4,
+  "energy_and_lineage_checks_pass": true,
+  "held_out_confirmation": false,
+  "selection_demonstrated": false,
+  "adaptation_demonstrated": false
+}

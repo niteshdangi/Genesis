@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Genesis</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --background: #f3f5f4;
+      --surface: #fafcfb;
+      --text: #1d2924;
+      --muted: #52645a;
+      --line: #c9d3cd;
+      --accent: #176843;
+      --button-text: #f8faf9;
+      --board: #e6ede8;
+      --cell-a: #176843;
+      --cell-b: #965510;
+      --cell-c: #365fbc;
+      --grid: #cad8ce;
+      --bond: #922c64;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #131a16;
+        --surface: #1b241e;
+        --text: #e5eee7;
+        --muted: #a5b7aa;
+        --line: #415247;
+        --accent: #a0dbb6;
+        --button-text: #14271b;
+        --board: #222f26;
+        --cell-a: #a0dbb6;
+        --cell-b: #e5b463;
+        --cell-c: #83a7ee;
+        --grid: #3b4a40;
+        --bond: #f4a4ce;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      background: var(--background);
+      color: var(--text);
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+    main { width: min(100% - 40px, 760px); margin: 0 auto; padding: 28px 0; }
+    header { margin-bottom: 20px; }
+    h1 { margin: 0 0 6px; font-size: 28px; letter-spacing: -0.8px; font-weight: 650; }
+    p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    button, select {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 10px 18px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    #play { background: var(--accent); border-color: var(--accent); color: var(--button-text); }
+    button:hover:not(:disabled), select:hover:not(:disabled) { filter: brightness(0.94); }
+    button:active:not(:disabled) { transform: translateY(1px); }
+    button:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    button:disabled, select:disabled { opacity: 0.5; cursor: not-allowed; }
+    .law-selector { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; font-size: 14px; }
+    #status { margin-left: auto; color: var(--muted); font-size: 13px; }
+    .board {
+      width: min(100%, max(128px, calc(100dvh - 380px)));
+      margin-inline: auto;
+      border: 1px solid var(--line);
+      background: var(--board);
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      image-rendering: pixelated;
+    }
+    .readout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      padding: 14px 0;
+      font-size: 13px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .readout strong { color: var(--text); font-weight: 600; }
+    main.chemistry .board { width: min(100%, max(128px, calc(100dvh - 560px))); }
+    #inspection, #distribution { overflow-wrap: anywhere; }
+    .population { display: inline-flex; align-items: center; gap: 6px; }
+    .swatch { width: 12px; height: 12px; border: 1px solid var(--line); }
+    .swatch.empty { background: var(--board); }
+    .swatch.a { background: var(--cell-a); }
+    .swatch.b { background: var(--cell-b); }
+    .swatch.c { background: var(--cell-c); }
+    #error {
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+    [hidden] { display: none !important; }
+    .experiment-panel { margin-top: 20px; padding: 16px; border: 1px solid var(--line); border-radius: 6px; }
+    .experiment-panel h2 { margin: 0 0 12px; font-size: 18px; }
+    .experiment-panel pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 240px; overflow: auto; font-size: 12px; }
+    .experiment-panel textarea { width: 100%; min-height: 240px; padding: 12px; font: 13px monospace; color: var(--text); background: var(--board); border: 1px solid var(--line); }
+    .experiment-panel summary { cursor: pointer; margin-bottom: 10px; }
+    #laboratory > summary { font-size: 18px; font-weight: 600; }
+    #world-context { margin-top: 6px; }
+    #research-summary { margin-bottom: 12px; }
+    #research-inspection { overflow-wrap: anywhere; margin-bottom: 12px; }
+    @media (max-width: 640px) {
+      main { width: calc(100% - 24px); padding-top: 18px; }
+      button { padding: 10px 14px; }
+      .readout { gap: 10px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Genesis</h1>
+      <p id="world-description">A material universe governed by local laws. Opposite edges connect.</p>
+      <p id="world-context">Matter is the main world. Research tools are in the Laboratory.</p>
+    </header>
+    <div class="toolbar" aria-label="Simulation controls">
+      <button id="play" type="button" disabled>Play</button>
+      <button id="step" type="button" disabled>Step</button>
+      <button id="save-checkpoint" type="button" disabled>Save</button>
+      <button id="load-checkpoint" type="button" disabled>Restore</button>
+      <input id="checkpoint-file" type="file" accept=".json,.gns,application/json,application/octet-stream" hidden>
+      <span id="status" role="status">Connecting...</span>
+    </div>
+    <div id="comparison-notice" hidden>
+      <p>This is a comparison model, not evidence of emergence in Matter. Switching starts a new paused world.</p>
+      <button id="return-matter" type="button" disabled>Open Matter</button>
+    </div>
+    <div id="error" role="alert" hidden></div>
+    <div id="chemistry-view" class="law-selector" hidden>
+      <label for="view">View</label>
+      <select id="view">
+        <option value="matter">Matter and bonds</option>
+        <option value="energy">Energy, matter and bonds</option>
+      </select>
+      <span>Click a particle to track it.</span>
+    </div>
+    <div id="matter-slice" class="law-selector" hidden>
+      <label for="slice-index">Depth slice</label>
+      <input id="slice-index" type="number" min="0" value="0" step="1" style="width:80px" aria-label="Depth slice index">
+      <span id="slice-label"></span>
+    </div>
+    <p id="matter-legend" hidden>Materials 0–3 have distinct colors. Bright centers indicate active conformations. The background shows local heat. This view is one slice of the complete 3D world.</p>
+    <div class="board">
+      <canvas id="world" width="768" height="768" role="img"
+        aria-label="Loading the complete 128 by 128 cell universe"></canvas>
+    </div>
+    <div class="readout">
+      <span>Generation <strong id="generation">-</strong></span>
+      <span>Rule <strong id="rule">-</strong></span>
+    </div>
+    <div id="population-readout" class="readout" aria-label="Matter populations">
+      <span class="population"><i class="swatch empty" aria-hidden="true"></i>Empty <strong id="empty">-</strong></span>
+      <span class="population"><i class="swatch a" aria-hidden="true"></i>A <strong id="a">-</strong></span>
+      <span class="population"><i class="swatch b" aria-hidden="true"></i>B <strong id="b">-</strong></span>
+      <span class="population"><i class="swatch c" aria-hidden="true"></i>C <strong id="c">-</strong></span>
+    </div>
+    <section id="chemistry-metrics" hidden aria-label="Chemistry observations">
+      <div class="readout">
+        <span>Particles <strong id="particles">-</strong></span>
+        <span>Free energy <strong id="free-energy">-</strong></span>
+        <span>Bond energy <strong id="bond-energy">-</strong></span>
+        <span>Total energy <strong id="total-energy">-</strong></span>
+        <span>Molecules <strong id="molecules">-</strong></span>
+        <span>Largest <strong id="largest">-</strong></span>
+        <span>Free particles <strong id="free-particles">-</strong></span>
+      </div>
+      <p>Reactions since reset: formation <strong id="formations">-</strong>,
+        dissociation <strong id="dissociations">-</strong>, exchange <strong id="exchanges">-</strong>.</p>
+      <p id="distribution"></p>
+      <p id="inspection">Click a particle to track its stable ID and molecule members.</p>
+    </section>
+    <section id="research-panel" class="experiment-panel" hidden aria-label="Research observations">
+      <h2>World observations</h2>
+      <p id="research-summary"></p>
+      <p id="research-inspection">Click an occupied cell to inspect its structure.</p>
+      <details><summary>Detailed measurements</summary><pre id="research-metrics"></pre></details>
+      <details><summary>Events from the latest generation</summary><pre id="research-events"></pre></details>
+      <p>These observations describe the configured laws. They do not establish artificial life or open-ended evolution.</p>
+    </section>
+    <details id="laboratory" class="experiment-panel">
+      <summary>Laboratory</summary>
+      <p>Configuration, recorded experiments and historical comparison models. These tools do not grant the universe memory or reproduction.</p>
+      <div class="law-selector">
+        <label for="law">World</label>
+        <select id="law" disabled>
+          <optgroup label="Main universe">
+            <option value="matter">Matter (3D material physics)</option>
+          </optgroup>
+          <optgroup label="Historical comparison models">
+            <option value="conway">Conway (cellular automaton)</option>
+            <option value="cyclic">Cyclic (cellular automaton)</option>
+            <option value="transport">Transport (movement only)</option>
+            <option value="chemistry">Chemistry (earlier bond model)</option>
+            <option value="polymers">Polymers (explicit templated copying)</option>
+            <option value="agents">Agents (scripted behavior)</option>
+          </optgroup>
+        </select>
+      </div>
+      <p>Changing worlds starts from initial conditions and pauses. Reset returns to the current world's initial or restored state.</p>
+      <p id="law-description"></p>
+      <div class="toolbar">
+        <button id="reset" type="button" disabled>Reset world</button>
+        <button id="batch" type="button" disabled>Advance 100 generations</button>
+      </div>
+      <details id="configuration">
+        <summary>Law configuration</summary>
+        <button id="read-spec" type="button" disabled>Load current configuration</button>
+        <label for="spec-editor"><p>Edit the world specification. Pause before applying changes.</p></label>
+        <textarea id="spec-editor" spellcheck="false" aria-label="Universe specification JSON"></textarea>
+        <div class="toolbar">
+          <button id="configure" type="button" disabled>Create configured world</button>
+          <button id="fork" type="button" disabled>Fork current state with these laws</button>
+          <button id="export-spec" type="button" disabled>Download configuration</button>
+        </div>
+      </details>
+      <div class="toolbar">
+        <label for="record-steps">Record generations</label>
+        <input id="record-steps" type="number" value="1000" min="1" max="1000000" step="1" style="width:110px">
+        <button id="record-experiment" type="button" disabled>Record a separate experiment</button>
+        <button id="list-experiments" type="button" disabled>Refresh recorded experiments</button>
+      </div>
+      <p id="recording-status" role="status"></p>
+      <details><summary>Recorded experiments</summary><pre id="experiment-list"></pre></details>
+      <p>One active research question: can local material laws support causal, repeatable reproduction? Existing memory assays and comparison models remain diagnostic tools.</p>
+      <p>Use <code>genesis lab run</code>, <code>genesis lab replay</code> and <code>genesis lab analyze</code> for recorded runs. Use <code>genesis lab help</code> for controls and specialised assays. Earlier records remain unchanged.</p>
+    </details>
+  </main>
+  <script>
+    const canvas = document.querySelector("#world");
+    const context = canvas.getContext("2d");
+    const playButton = document.querySelector("#play");
+    const stepButton = document.querySelector("#step");
+    const resetButton = document.querySelector("#reset");
+    const lawSelector = document.querySelector("#law");
+    const status = document.querySelector("#status");
+    const error = document.querySelector("#error");
+    const theme = matchMedia("(prefers-color-scheme: dark)");
+    const viewSelector = document.querySelector("#view");
+    let selectedParticle = null;
+    let state = null;
+    let busy = false;
+    let failed = false;
+    let pendingRead = Promise.resolve();
+    let selectedResearchPosition = null;
+    let actionFailure = null;
+    let requestedSlice = null;
+
+    function updateControls() {
+      playButton.disabled = busy || failed || state === null || state.error !== null;
+      stepButton.disabled = busy || failed || state === null || state.running || state.error !== null;
+      resetButton.disabled = busy || failed || state === null;
+      lawSelector.disabled = busy || failed || state === null;
+      document.querySelector("#return-matter").disabled = busy || failed || state === null;
+      playButton.textContent = state?.running ? "Pause" : "Play";
+      if (!busy && state !== null) lawSelector.value = state.law;
+      for (const id of ["batch", "load-checkpoint", "configure", "fork"]) {
+        document.querySelector(`#${id}`).disabled = busy || failed || state === null || state.running ||
+          (id === "batch" && state.error !== null);
+      }
+      for (const id of ["save-checkpoint", "read-spec", "export-spec"]) {
+        document.querySelector(`#${id}`).disabled = busy || failed || state === null;
+      }
+      document.querySelector("#slice-index").disabled = busy || failed || state === null;
+      document.querySelector("#record-experiment").disabled = busy || failed || state === null || state.running || state.error !== null || state.recording?.status === "running";
+      document.querySelector("#list-experiments").disabled = busy || failed || state === null;
+    }
+
+    function draw() {
+      if (state === null) return;
+      const colors = getComputedStyle(document.documentElement);
+      context.fillStyle = colors.getPropertyValue("--board").trim();
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      const matterColors = [
+        colors.getPropertyValue("--board").trim(),
+        colors.getPropertyValue("--cell-a").trim(),
+        colors.getPropertyValue("--cell-b").trim(),
+        colors.getPropertyValue("--cell-c").trim()
+      ];
+      const cellWidth = canvas.width / state.width;
+      const cellHeight = canvas.height / state.height;
+      const chemistry = state.chemistry;
+      const field = state.polymers?.energy || state.matter?.heat || null;
+      if (field !== null) {
+        const energies = field.map(BigInt);
+        const maximum = energies.reduce((a, b) => a > b ? a : b, 1n);
+        for (let index = 0; index < energies.length; index++) {
+          context.fillStyle = `rgba(190, 125, 25, ${Number(energies[index] * 500n / maximum) / 1000})`;
+          context.fillRect(index % state.width * cellWidth, Math.floor(index / state.width) * cellHeight, cellWidth, cellHeight);
+        }
+      }
+      if (state.agents !== null) {
+        for (let index = 0; index < state.agents.resources.length; index++) {
+          const total = state.agents.resources[index].reduce((sum, n) => sum + BigInt(n), 0n);
+          const opacity = Math.min(0.45, Number(total > 100n ? 100n : total) / 100);
+          context.fillStyle = `rgba(60, 135, 95, ${opacity})`;
+          context.fillRect(index % state.width * cellWidth, Math.floor(index / state.width) * cellHeight, cellWidth, cellHeight);
+        }
+      }
+      if (chemistry !== null && viewSelector.value === "energy") {
+        const energies = chemistry.energy.map(BigInt);
+        const maximum = energies.reduce((maximum, energy) => energy > maximum ? energy : maximum, 1n);
+        for (let index = 0; index < energies.length; index++) {
+          const level = Number(energies[index] * 1000n / maximum) / 1000;
+          context.fillStyle = `rgba(190, 125, 25, ${level * 0.75})`;
+          context.fillRect(index % state.width * cellWidth,
+            Math.floor(index / state.width) * cellHeight, cellWidth, cellHeight);
+        }
+      }
+      const inset = chemistry !== null && viewSelector.value === "energy" ? 1.5 : 0;
+      for (let index = 0; index < state.cells.length; index++) {
+        if (state.cells[index] !== 0) {
+          context.fillStyle = matterColors[state.cells[index]];
+          context.fillRect(
+            (index % state.width) * cellWidth + inset,
+            Math.floor(index / state.width) * cellHeight + inset,
+            cellWidth - inset * 2,
+            cellHeight - inset * 2
+          );
+        }
+      }
+      if (state.matter !== null) {
+        const materials = ["#69bd8b", "#d99a44", "#6692dd", "#bc72ca"];
+        for (const particle of state.matter.particles) {
+          const x = particle.position % state.width * cellWidth;
+          const y = Math.floor(particle.position / state.width) * cellHeight;
+          context.fillStyle = materials[particle.material];
+          context.fillRect(x + 1, y + 1, Math.max(1, cellWidth - 2), Math.max(1, cellHeight - 2));
+          if (particle.conformation === 1) {
+            context.fillStyle = "#fff5ce";
+            context.fillRect(x + cellWidth * 0.35, y + cellHeight * 0.35, cellWidth * 0.3, cellHeight * 0.3);
+          }
+        }
+      }
+      context.strokeStyle = colors.getPropertyValue("--grid").trim();
+      context.lineWidth = 1;
+      context.beginPath();
+      for (let x = 0; x <= state.width; x++) {
+        const position = Math.min(x * cellWidth + 0.5, canvas.width - 0.5);
+        context.moveTo(position, 0);
+        context.lineTo(position, canvas.height);
+      }
+      for (let y = 0; y <= state.height; y++) {
+        const position = Math.min(y * cellHeight + 0.5, canvas.height - 0.5);
+        context.moveTo(0, position);
+        context.lineTo(canvas.width, position);
+      }
+      context.stroke();
+      if (selectedResearchPosition !== null && selectedResearchPosition < state.width * state.height) {
+        context.strokeStyle = colors.getPropertyValue("--text").trim();
+        context.lineWidth = 2;
+        context.strokeRect(selectedResearchPosition % state.width * cellWidth, Math.floor(selectedResearchPosition / state.width) * cellHeight, cellWidth, cellHeight);
+      }
+      if (chemistry !== null) {
+        context.strokeStyle = colors.getPropertyValue("--bond").trim();
+        context.lineWidth = 2;
+        context.beginPath();
+        for (const bond of chemistry.bonds) {
+          const ax = (bond.from % state.width + 0.5) * cellWidth;
+          const ay = (Math.floor(bond.from / state.width) + 0.5) * cellHeight;
+          let bx = (bond.to % state.width + 0.5) * cellWidth;
+          let by = (Math.floor(bond.to / state.width) + 0.5) * cellHeight;
+          if (bx - ax > canvas.width / 2) bx -= canvas.width;
+          if (ax - bx > canvas.width / 2) bx += canvas.width;
+          if (by - ay > canvas.height / 2) by -= canvas.height;
+          if (ay - by > canvas.height / 2) by += canvas.height;
+          const xs = bx < 0 ? [0, canvas.width] : bx > canvas.width ? [0, -canvas.width] : [0];
+          const ys = by < 0 ? [0, canvas.height] : by > canvas.height ? [0, -canvas.height] : [0];
+          for (const x of xs) for (const y of ys) {
+            context.moveTo(ax + x, ay + y);
+            context.lineTo(bx + x, by + y);
+          }
+        }
+        context.stroke();
+        const particle = chemistry.particles.find(particle => particle.id === selectedParticle);
+        if (particle !== undefined) {
+          context.strokeStyle = colors.getPropertyValue("--text").trim();
+          context.lineWidth = 1;
+          const members = chemistry.molecules.find(molecule => molecule.includes(particle.id)) || [particle.id];
+          const ids = new Set(members);
+          for (const member of chemistry.particles) if (ids.has(member.id)) {
+            context.strokeRect(member.position % state.width * cellWidth + 1,
+              Math.floor(member.position / state.width) * cellHeight + 1, cellWidth - 2, cellHeight - 2);
+          }
+        }
+      }
+    }
+
+    function validateChemistry(next, populations) {
+      const chemistry = next.chemistry;
+      if (next.law !== "chemistry") {
+        if (chemistry !== null) throw new Error("Unexpected chemistry state for a cellular law.");
+        return;
+      }
+      const decimal = value => typeof value === "string" && /^\d+$/.test(value);
+      if (chemistry === null || typeof chemistry !== "object" ||
+          !Array.isArray(chemistry.valences) || chemistry.valences.length !== 4 ||
+          chemistry.valences[0] !== 0 ||
+          !chemistry.valences.every(valence => Number.isInteger(valence) && valence >= 0 && valence <= 4) ||
+          !Array.isArray(chemistry.energy) || chemistry.energy.length !== next.cells.length ||
+          !chemistry.energy.every(decimal) || !Array.isArray(chemistry.particles) ||
+          !Array.isArray(chemistry.bonds) || !Array.isArray(chemistry.molecules) ||
+          ![chemistry.free_energy, chemistry.bond_energy, chemistry.total_energy,
+            chemistry.reactions?.formation, chemistry.reactions?.dissociation,
+            chemistry.reactions?.exchange].every(decimal)) {
+        throw new Error("The server returned invalid chemistry observations.");
+      }
+      const particles = new Map();
+      const positions = new Set();
+      for (const particle of chemistry.particles) {
+        if (!Number.isSafeInteger(particle.id) || particle.id <= 0 || particles.has(particle.id) ||
+            !Number.isInteger(particle.position) || particle.position < 0 ||
+            particle.position >= next.cells.length || positions.has(particle.position) ||
+            ![1, 2, 3].includes(particle.kind) || next.cells[particle.position] !== particle.kind) {
+          throw new Error("The server returned inconsistent particle identities.");
+        }
+        particles.set(particle.id, particle);
+        positions.add(particle.position);
+      }
+      const bonds = new Set();
+      const adjacency = new Map([...particles.keys()].map(id => [id, []]));
+      for (const bond of chemistry.bonds) {
+        const a = particles.get(bond.a);
+        const b = particles.get(bond.b);
+        const key = `${bond.a}:${bond.b}`;
+        if (a === undefined || b === undefined || bond.a >= bond.b || bonds.has(key) ||
+            a.position !== bond.from || b.position !== bond.to || bond.energy !== "2") {
+          throw new Error("The server returned invalid bond endpoints.");
+        }
+        const dx = Math.abs(a.position % 128 - b.position % 128);
+        const dy = Math.abs(Math.floor(a.position / 128) - Math.floor(b.position / 128));
+        if (!((dy === 0 && (dx === 1 || dx === 127)) || (dx === 0 && (dy === 1 || dy === 127)))) {
+          throw new Error("A bond is not orthogonally adjacent.");
+        }
+        bonds.add(key);
+        adjacency.get(bond.a).push(bond.b);
+        adjacency.get(bond.b).push(bond.a);
+      }
+      const molecules = [];
+      const visited = new Set();
+      for (const id of particles.keys()) {
+        if (adjacency.get(id).length > chemistry.valences[particles.get(id).kind]) {
+          throw new Error("A particle exceeds its valence.");
+        }
+        if (visited.has(id)) continue;
+        const pending = [id], group = [];
+        while (pending.length) {
+          const member = pending.pop();
+          if (visited.has(member)) continue;
+          visited.add(member);
+          group.push(member);
+          pending.push(...adjacency.get(member));
+        }
+        if (group.length >= 2) molecules.push(group.sort((a, b) => a - b));
+      }
+      molecules.sort((a, b) => a[0] - b[0]);
+      const distribution = {};
+      for (const group of molecules) distribution[group.length] = (distribution[group.length] || 0) + 1;
+      const distributionMatches = chemistry.size_distribution !== null &&
+        typeof chemistry.size_distribution === "object" &&
+        JSON.stringify(Object.entries(distribution)) === JSON.stringify(Object.entries(chemistry.size_distribution));
+      if (chemistry.particle_count !== particles.size ||
+          particles.size !== populations[1] + populations[2] + populations[3] ||
+          JSON.stringify(molecules) !== JSON.stringify(chemistry.molecules) ||
+          chemistry.free_particles !== particles.size - molecules.reduce((sum, group) => sum + group.length, 0) ||
+          chemistry.largest_molecule !== molecules.reduce((max, group) => Math.max(max, group.length), 0) ||
+          !distributionMatches ||
+          chemistry.energy.reduce((sum, energy) => sum + BigInt(energy), 0n) !== BigInt(chemistry.free_energy) ||
+          BigInt(chemistry.bond_energy) !== BigInt(bonds.size) * 2n ||
+          BigInt(chemistry.free_energy) + BigInt(chemistry.bond_energy) !== BigInt(chemistry.total_energy)) {
+        throw new Error("Chemistry energy or molecule accounting is inconsistent.");
+      }
+    }
+
+    function inspect() {
+      const particle = state?.chemistry?.particles.find(particle => particle.id === selectedParticle);
+      document.querySelector("#inspection").textContent = particle === undefined
+        ? "Click a particle to track its stable ID and molecule members."
+        : `Particle #${particle.id} (${"ABC"[particle.kind - 1]}) at (${particle.position % 128}, ${Math.floor(particle.position / 128)}). ` +
+          (state.chemistry.molecules.find(molecule => molecule.includes(particle.id))
+            ?.map(id => `#${id}`).join(", ") || "Free particle") + ".";
+    }
+
+    function display(next) {
+      next.matter ??= null;
+      if (!Number.isInteger(next.width) || !Number.isInteger(next.height) || next.width < 8 || next.width > 512 || next.height < 8 || next.height > 512 ||
+          !Array.isArray(next.cells) || next.cells.length !== next.width * next.height ||
+          !next.cells.every(cell => Number.isInteger(cell) && cell >= 0 && cell <= 3) ||
+          !["matter", "conway", "cyclic", "transport", "chemistry", "polymers", "agents"].includes(next.law) ||
+          !Array.isArray(next.populations) || next.populations.length !== 4 ||
+          typeof next.generation !== "string" || !/^\d+$/.test(next.generation) ||
+          typeof next.running !== "boolean" || typeof next.rule !== "string" ||
+          !(next.error === null || typeof next.error === "string")) {
+        throw new Error("The server returned an invalid universe state.");
+      }
+      const populations = [0, 0, 0, 0];
+      for (const cell of next.cells) populations[cell]++;
+      if (!next.populations.every((count, index) => count === populations[index])) {
+        throw new Error("The server returned inconsistent matter populations.");
+      }
+      validateChemistry(next, populations);
+      validateResearch(next);
+      state = next;
+      const longest = Math.max(state.width, state.height);
+      canvas.width = Math.round(768 * state.width / longest);
+      canvas.height = Math.round(768 * state.height / longest);
+      canvas.style.aspectRatio = `${state.width} / ${state.height}`;
+      document.querySelector("#world-description").textContent = state.matter !== null ?
+        `${state.width} x ${state.height} x ${state.matter.depth} material world. Opposite edges connect.` :
+        `${state.width} x ${state.height} ${state.law} world. Opposite edges connect.`;
+      document.querySelector("#world-context").textContent = state.law === "matter" ?
+        `Matter law v${state.metrics.law_version ?? 1}. Research tools are in the Laboratory.` :
+        `Historical comparison model: ${state.law}. Matter remains the main Genesis universe.`;
+      document.querySelector("#comparison-notice").hidden = state.law === "matter";
+      document.querySelector("#research-panel").hidden = state.polymers === null && state.agents === null && state.matter === null;
+      document.querySelector("#matter-slice").hidden = state.matter === null;
+      document.querySelector("#matter-legend").hidden = state.matter === null;
+      document.querySelector("#population-readout").hidden = state.matter !== null;
+      if (state.matter !== null) {
+        const input = document.querySelector("#slice-index");
+        input.max = state.matter.depth - 1; input.value = state.matter.z;
+        document.querySelector("#slice-label").textContent = `z=${state.matter.z}, depth ${state.matter.depth}`;
+      }
+      document.querySelector("#research-metrics").textContent = JSON.stringify(state.metrics, null, 2);
+      document.querySelector("#research-summary").textContent = state.matter !== null ?
+        `${state.metrics.particles} particles, ${state.metrics.bonds} bonds, ${state.metrics.components} connected structures. ` +
+        `Active conformations: ${state.metrics.active_conformations}. Total accounted energy: ${state.metrics.total_energy}.` :
+        "Observations from a comparison model. See detailed measurements for its configured behavior.";
+      document.querySelector("#research-events").textContent = JSON.stringify((state.polymers || state.agents || state.matter)?.events || [], null, 2);
+      document.querySelector("#recording-status").textContent = state.recording ?
+        `${state.recording.status}: ${state.recording.path}${state.recording.error ? ": " + state.recording.error : ""}` : "No experiment recording in this inspector.";
+      inspectResearch();
+      const chemistry = state.chemistry;
+      document.querySelector("main").classList.toggle("chemistry", chemistry !== null);
+      document.querySelector("#chemistry-metrics").hidden = chemistry === null;
+      document.querySelector("#chemistry-view").hidden = chemistry === null;
+      if (chemistry !== null) {
+        for (const [id, value] of Object.entries({
+          particles: chemistry.particle_count, "free-energy": chemistry.free_energy,
+          "bond-energy": chemistry.bond_energy, "total-energy": chemistry.total_energy,
+          molecules: chemistry.molecules.length, largest: chemistry.largest_molecule,
+          "free-particles": chemistry.free_particles, formations: chemistry.reactions.formation,
+          dissociations: chemistry.reactions.dissociation, exchanges: chemistry.reactions.exchange
+        })) document.querySelector(`#${id}`).textContent = value;
+        document.querySelector("#distribution").textContent = "Molecule sizes (size: count): " +
+          (Object.entries(chemistry.size_distribution).map(([size, count]) => `${size}: ${count}`).join(", ") || "none");
+        inspect();
+      }
+      document.querySelector("#generation").textContent = state.generation;
+      for (const [index, name] of ["empty", "a", "b", "c"].entries()) {
+        document.querySelector(`#${name}`).textContent = populations[index];
+      }
+      document.querySelector("#rule").textContent = state.rule;
+      document.querySelector("#law-description").textContent = {
+        conway: "A is alive and follows the configured birth and survival rule shown above. B and C are not used.",
+        cyclic: "A becomes B next to B; B becomes C next to C; C becomes A next to A. Empty stays empty.",
+        transport: "Particles move to adjacent Empty cells. Direction priority rotates each generation. Lowest source index wins conflicts; others stay. Particle types and counts are conserved.",
+        chemistry: "Energy flows first; particles and rigid molecules translate; then local reactions form, break or exchange bonds. Matter and free plus bond energy are conserved. Pink links are bonds; amber intensity shows energy. Random decisions are seeded and repeatable.",
+        polymers: "A and B are sequence residues; C is a terminal cap. Templates guide one local recruitment per generation. Products detach at a cap. Monomer identities are conserved; movement, assembly and maintenance have an explicit energy ledger. Released descendants can participate in the same laws.",
+        agents: "A and B indicate harvesting specialties. Agents harvest, exchange resources for conserved credits, communicate preferences, consume resources, and divide their stores when producing descendants. Background shading indicates local resources. These capabilities are defined by the agent laws.",
+        matter: "Initially unbonded material follows local movement, bonding, conformation, catalysis, and excitation laws. Heat enters and leaves through explicitly accounted reservoirs. Structures are observed without assigning organism types, memories, goals, or reproduction behavior."
+      }[state.law];
+      const mode = state.error !== null ? "Simulation stopped" : state.running ? "Running" : "Paused";
+      if (status.textContent !== mode) status.textContent = mode;
+      canvas.setAttribute("aria-label",
+        `Complete ${state.width} by ${state.height} universe, generation ${state.generation}: ${populations[0]} Empty, ${populations[1]} A, ${populations[2]} B, ${populations[3]} C`);
+      draw();
+      error.hidden = state.error === null && actionFailure === null;
+      if (state.error !== null) error.textContent = `Simulation stopped without publishing a failed generation: ${state.error}`;
+      else if (actionFailure !== null) error.textContent = actionFailure;
+    }
+
+    async function refresh(action = null, body = null) {
+      try {
+        const statePath = requestedSlice !== null && state?.law === "matter" ? `/state?z=${requestedSlice}` : "/state";
+        const response = await fetch(action === null ? statePath : `/${action}`, {
+          method: action === null ? "GET" : "POST",
+          headers: action === null ? {} : { "Content-Type": "application/json" },
+          body: body === null ? undefined : typeof body === "string" ? body : JSON.stringify(body),
+          cache: "no-store",
+          signal: AbortSignal.timeout(action === "batch" || action === "restore" ? 60000 : 15000)
+        });
+        if (!response.ok) {
+          const details = await response.json();
+          throw new Error(details.error || `Server returned HTTP ${response.status}.`);
+        }
+        if (action !== null) actionFailure = null;
+        let next = await response.json();
+        if (action !== null && next.law === "matter" && requestedSlice !== null) {
+          if (requestedSlice < next.matter.depth) next = JSON.parse(await getText(`/state?z=${requestedSlice}`));
+          else requestedSlice = null;
+        }
+        display(next);
+        failed = false;
+      } catch (failure) {
+        if (action !== null) actionFailure = failure.message;
+        failed = true;
+        status.textContent = "Disconnected";
+        error.textContent = `Unable to update the universe: ${failure.message} Keep the Rust server running; reconnecting automatically.`;
+        error.hidden = false;
+      } finally {
+        updateControls();
+      }
+    }
+
+    async function control(action, body = null) {
+      busy = true;
+      updateControls();
+      try {
+        await pendingRead;
+        if (["reset", "rule", "configure", "restore"].includes(action)) { selectedParticle = null; selectedResearchPosition = null; requestedSlice = null; }
+        await refresh(action, body);
+      } finally {
+        busy = false;
+        updateControls();
+      }
+    }
+
+    playButton.addEventListener("click", () => control(state.running ? "pause" : "play"));
+    stepButton.addEventListener("click", () => control("step"));
+    resetButton.addEventListener("click", () => control("reset"));
+    document.querySelector("#return-matter").addEventListener("click", () => control("rule", { rule: "matter" }));
+    lawSelector.addEventListener("change", () => control("rule", { rule: lawSelector.value }));
+    theme.addEventListener("change", draw);
+    viewSelector.addEventListener("change", draw);
+    document.querySelector("#batch").addEventListener("click", () => control("batch", { steps: 100 }));
+    document.querySelector("#slice-index").addEventListener("change", event => {
+      const z = Number(event.target.value);
+      if (Number.isInteger(z) && z >= 0 && z < (state?.matter?.depth || 0)) { requestedSlice = z; selectedResearchPosition = null; }
+      else showActionError(new Error("Choose a valid depth slice."));
+    });
+    document.querySelector("#record-experiment").addEventListener("click", () => {
+      const steps = Number(document.querySelector("#record-steps").value);
+      if (!Number.isInteger(steps) || steps < 1 || steps > 1000000) { showActionError(new Error("Choose 1 to 1000000 generations.")); return; }
+      control("record", { steps });
+    });
+    document.querySelector("#list-experiments").addEventListener("click", () => resourceAction(async () => {
+      document.querySelector("#experiment-list").textContent = JSON.stringify(JSON.parse(await getText("/experiments")), null, 2);
+    }));
+    document.querySelector("#read-spec").addEventListener("click", () => resourceAction(async () => {
+      document.querySelector("#spec-editor").value = await getText("/spec");
+    }));
+    document.querySelector("#save-checkpoint").addEventListener("click", () => resourceAction(async () => {
+      const response = await fetch("/checkpoint", { cache: "no-store", signal: AbortSignal.timeout(60000) });
+      if (!response.ok) throw new Error((await response.json()).error || "Checkpoint download failed.");
+      const binary = response.headers.get("Content-Type")?.includes("octet-stream");
+      download(`genesis-${state.law}-${state.generation}.${binary ? "gns" : "json"}`, await response.blob());
+    }));
+    document.querySelector("#export-spec").addEventListener("click", () => resourceAction(async () => {
+      download(`genesis-${state.law}-spec.json`, await getText("/spec"));
+    }));
+    for (const action of ["configure", "fork"]) document.querySelector(`#${action}`).addEventListener("click", async () => {
+      try {
+        const specification = document.querySelector("#spec-editor").value;
+        JSON.parse(specification);
+        await control(action, specification);
+      }
+      catch (failure) { showActionError(failure); }
+    });
+    document.querySelector("#load-checkpoint").addEventListener("click", () => document.querySelector("#checkpoint-file").click());
+    document.querySelector("#checkpoint-file").addEventListener("change", async event => {
+      const file = event.target.files[0];
+      event.target.value = "";
+      if (!file) return;
+      try {
+        const header = new TextDecoder().decode(await file.slice(0, 8).arrayBuffer());
+        if (header === "GNST3D01") throw new Error("This checkpoint references sidecar chunks. Restore it with the CLI, or choose a downloaded standalone bundle.");
+        if (header === "GNSPACK1") {
+          if (file.size > 512 * 1024 * 1024) throw new Error("Checkpoint exceeds 512 MiB.");
+          await restoreBinary(file); return;
+        }
+        if (file.size > 64 * 1024 * 1024) throw new Error("JSON checkpoint exceeds 64 MiB.");
+        const checkpoint = await file.text();
+        JSON.parse(checkpoint);
+        await control("restore", checkpoint);
+      } catch (failure) { showActionError(failure); }
+    });
+    canvas.addEventListener("click", event => {
+      if (state === null) return;
+      const bounds = canvas.getBoundingClientRect();
+      const x = Math.floor((event.clientX - bounds.left) * state.width / bounds.width);
+      const y = Math.floor((event.clientY - bounds.top) * state.height / bounds.height);
+      if (x < 0 || x >= state.width || y < 0 || y >= state.height) return;
+      if (state.chemistry !== null) {
+        selectedParticle = state.chemistry.particles.find(particle => particle.position === y * state.width + x)?.id ?? null;
+        inspect();
+      } else { selectedResearchPosition = y * state.width + x; inspectResearch(); }
+      draw();
+    });
+
+    function validateResearch(next) {
+      if ((next.law === "matter") !== (next.matter !== null)) throw new Error("Material observations do not match the selected world.");
+      if (next.matter !== null && (!Number.isInteger(next.matter.depth) || next.matter.depth < 8 || next.matter.depth > 256 ||
+          !Number.isInteger(next.matter.z) || next.matter.z < 0 || next.matter.z >= next.matter.depth ||
+          !Array.isArray(next.matter.heat) || next.matter.heat.length !== next.cells.length ||
+          !next.matter.heat.every(n => typeof n === "string" && /^\d+$/.test(n)) ||
+          !Array.isArray(next.matter.particles) || !Array.isArray(next.matter.events) ||
+          !next.matter.particles.every(p => Number.isInteger(p.position) && p.position >= 0 && p.position < next.cells.length &&
+            Number.isInteger(p.material) && p.material >= 0 && p.material < 4 && [0, 1].includes(p.conformation)))) {
+        throw new Error("Invalid material observations.");
+      }
+      if ((next.law === "polymers") !== (next.polymers !== null) || (next.law === "agents") !== (next.agents !== null)) {
+        throw new Error("World observations do not match the selected law.");
+      }
+      if (next.polymers !== null && (!Array.isArray(next.polymers.chains) || !Array.isArray(next.polymers.energy) ||
+          next.polymers.energy.length !== next.cells.length || !next.polymers.energy.every(n => typeof n === "string" && /^\d+$/.test(n)) ||
+          !Array.isArray(next.polymers.events) || !next.polymers.chains.every(p => Array.isArray(p.positions) &&
+            p.positions.every(position => Number.isInteger(position) && position >= 0 && position < next.cells.length)))) {
+        throw new Error("Invalid polymer observations.");
+      }
+      if (next.agents !== null && (!Array.isArray(next.agents.agents) || !Array.isArray(next.agents.resources) ||
+          next.agents.resources.length !== next.cells.length || !next.agents.resources.every(r => Array.isArray(r) && r.length === 2 &&
+            r.every(n => typeof n === "string" && /^\d+$/.test(n))) || !Array.isArray(next.agents.events) ||
+          !next.agents.agents.every(a => Number.isInteger(a.position) && a.position >= 0 && a.position < next.cells.length))) {
+        throw new Error("Invalid agent observations.");
+      }
+    }
+    function inspectResearch() {
+      const position = selectedResearchPosition;
+      const chain = state?.polymers?.chains.find(p => p.positions.includes(position));
+      const agent = state?.agents?.agents.find(a => a.position === position);
+      const material = state?.matter?.particles.find(p => p.position === position);
+      document.querySelector("#research-inspection").textContent = chain ?
+        `Chain #${chain.id}: ${chain.sequence}; parent ${chain.parent || "none"}; depth ${chain.depth}; age ${chain.age}; ${chain.attached_to ? "attached to #" + chain.attached_to : "released"}.` : agent ?
+        `Agent #${agent.id}: goods ${agent.goods.join(" / ")}; credits ${agent.credits}; age ${agent.age}; parent ${agent.parent || "none"}; preference ${agent.preference}.` : material ?
+        `Particle #${material.id}, material ${material.material}, position (${material.xyz.join(", ")}), conformation ${material.conformation}, excitation ${material.excitation}, bonded neighbors ${material.bonds.filter(id => id !== "0").join(", ") || "none"}.` :
+        "Click an occupied cell to inspect its structure.";
+    }
+    async function getText(path) {
+      const response = await fetch(path, { cache: "no-store", signal: AbortSignal.timeout(60000) });
+      const result = await response.text();
+      if (!response.ok) throw new Error(JSON.parse(result).error || `HTTP ${response.status}`);
+      return result;
+    }
+    function download(name, value) {
+      const url = URL.createObjectURL(value instanceof Blob ? value : new Blob([value], { type: "application/json" }));
+      const anchor = document.createElement("a");
+      anchor.href = url; anchor.download = name; document.body.append(anchor); anchor.click(); anchor.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+    function showActionError(failure) { actionFailure = failure.message; error.hidden = false; error.textContent = failure.message; }
+    async function resourceAction(action) {
+      busy = true; updateControls();
+      try { await pendingRead; await action(); }
+      catch (failure) { showActionError(failure); }
+      finally { busy = false; updateControls(); }
+    }
+    async function restoreBinary(file) {
+      busy = true; updateControls();
+      try {
+        await pendingRead;
+        const response = await fetch("/restore-binary", { method: "POST", headers: { "Content-Type": "application/octet-stream" },
+          body: file, signal: AbortSignal.timeout(60000) });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Binary restore failed.");
+        requestedSlice = null; selectedResearchPosition = null; selectedParticle = null; actionFailure = null;
+        display(result); failed = false;
+      } catch (failure) { showActionError(failure); }
+      finally { busy = false; updateControls(); }
+    }
+
+    async function poll() {
+      if (!busy) {
+        pendingRead = refresh();
+        await pendingRead;
+      }
+      setTimeout(poll, failed ? 1000 : 100);
+    }
+
+    if (context === null) {
+      failed = true;
+      status.textContent = "Canvas unavailable";
+      error.textContent = "This browser does not support the 2D canvas needed to display the universe.";
+      error.hidden = false;
+    } else {
+      poll();
+    }
+  </script>
+</body>
+</html>

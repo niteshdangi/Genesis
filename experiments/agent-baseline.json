@@ -1,0 +1,17 @@
+{
+  "kind": "agents",
+  "config": {
+    "space": { "width": 64, "height": 64 },
+    "seed": 1,
+    "population": 96,
+    "food_per_site": 8,
+    "regrowth": 1,
+    "site_capacity": 24,
+    "initial_credits": 32,
+    "harvest": 4,
+    "metabolism": 1,
+    "reproduction_threshold": 32,
+    "max_age": 1000,
+    "max_population": 512
+  }
+}

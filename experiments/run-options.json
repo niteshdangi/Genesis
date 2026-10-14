@@ -1,0 +1,8 @@
+{
+  "steps": 10000,
+  "checkpoint_every": 1000,
+  "sample_every": 100,
+  "revision": "unrecorded",
+  "label": "baseline",
+  "interventions": []
+}

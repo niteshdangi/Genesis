@@ -1,0 +1,10 @@
+{
+  "warmup": 1000,
+  "delay": 200,
+  "response_steps": 100,
+  "center": [8, 8, 8],
+  "radius": 1,
+  "conditioning_heat_per_site": 12,
+  "probe_heat_per_site": 8,
+  "archive_limit_mib": 256
+}

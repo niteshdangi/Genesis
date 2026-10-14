@@ -1,0 +1,13 @@
+{
+  "warmup": 1000,
+  "stability": 20,
+  "delay": 200,
+  "response_steps": 32,
+  "replicas": 16,
+  "candidates": 2,
+  "min_size": 2,
+  "max_size": 8,
+  "conditioning_heat": 64,
+  "probe_heat": 64,
+  "archive_limit_mib": 256
+}

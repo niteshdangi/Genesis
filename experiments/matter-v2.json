@@ -1,0 +1,16 @@
+{
+  "kind": "matter",
+  "config": {
+    "law_version": 2,
+    "space": {"width": 16, "height": 16, "depth": 16},
+    "particles": 750,
+    "seed": 101,
+    "motion_rate": 100000,
+    "breaking_rate": 500,
+    "execution": {
+      "parallel": false,
+      "gpu_fields": false,
+      "full_provenance": true
+    }
+  }
+}

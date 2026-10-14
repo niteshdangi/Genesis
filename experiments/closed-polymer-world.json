@@ -1,0 +1,10 @@
+{
+  "kind": "polymers",
+  "config": {
+    "seed": 1,
+    "energy_input": 0,
+    "seeded_templates": true,
+    "copying_enabled": true,
+    "nucleation_per_million": 0
+  }
+}

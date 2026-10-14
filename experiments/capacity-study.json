@@ -1,0 +1,24 @@
+{
+  "runs": [
+    {
+      "name": "polymers-32-seed1",
+      "spec": {"kind": "polymers", "config": {"seed": 1, "space": {"width": 32, "height": 32}}},
+      "options": {"steps": 10000, "checkpoint_every": 1000, "sample_every": 100, "label": "capacity-32"}
+    },
+    {
+      "name": "polymers-64-seed1",
+      "spec": {"kind": "polymers", "config": {"seed": 1, "space": {"width": 64, "height": 64}}},
+      "options": {"steps": 10000, "checkpoint_every": 1000, "sample_every": 100, "label": "capacity-64"}
+    },
+    {
+      "name": "polymers-128-seed1",
+      "spec": {"kind": "polymers", "config": {"seed": 1, "space": {"width": 128, "height": 128}}},
+      "options": {"steps": 10000, "checkpoint_every": 1000, "sample_every": 100, "label": "capacity-128"}
+    },
+    {
+      "name": "agents-64-seed1",
+      "spec": {"kind": "agents", "config": {"seed": 1, "space": {"width": 64, "height": 64}}},
+      "options": {"steps": 10000, "checkpoint_every": 1000, "sample_every": 100, "label": "agent-world"}
+    }
+  ]
+}

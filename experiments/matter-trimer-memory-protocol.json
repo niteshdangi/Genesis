@@ -1,0 +1,19 @@
+{
+  "warmup": 1000,
+  "stability": 20,
+  "delay": 200,
+  "response_steps": 32,
+  "replicas": 64,
+  "candidates": 4,
+  "min_size": 3,
+  "max_size": 3,
+  "conditioning_heat": 64,
+  "probe_heat": 256,
+  "archive_limit_mib": 256,
+  "cold_write": true,
+  "open_chains_only": true,
+  "stability_graph_only": true,
+  "receiver_endpoints_only": true,
+  "require_intact_channel": true,
+  "latency_readout": true
+}

@@ -1,0 +1,20 @@
+{
+  "kind":"matter",
+  "config":{
+    "space":{"width":16,"height":16,"depth":16},
+    "particles":750,
+    "seed":1,
+    "initial_heat":0,
+    "initial_excitation":0,
+    "motion_rate":100000,
+    "breaking_rate":100,
+    "reservoir":{"enabled":true,"input_per_site":4,"sink_per_site":4,"capacity":6},
+    "materials":[
+      {"ports":63,"valence":1,"affinities":[70,90,30,20],"barrier":4,"conformation_energy":2,"switching_rate":30000,"coupling":20000,"catalytic_strength":1},
+      {"ports":63,"valence":1,"affinities":[90,50,80,40],"barrier":5,"conformation_energy":3,"switching_rate":20000,"coupling":40000,"catalytic_strength":2},
+      {"ports":15,"valence":1,"affinities":[30,80,80,60],"barrier":6,"conformation_energy":2,"switching_rate":40000,"coupling":30000,"catalytic_strength":1},
+      {"ports":63,"valence":1,"affinities":[20,40,60,90],"barrier":3,"conformation_energy":4,"switching_rate":10000,"coupling":50000,"catalytic_strength":3}
+    ],
+    "execution":{"full_provenance":true,"parallel":false,"gpu_fields":false}
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "polymers",
+  "config": {
+    "space": { "width": 64, "height": 64 },
+    "seed": 1,
+    "monomers_per_site": 6,
+    "initial_energy": 12,
+    "energy_input": 1,
+    "energy_capacity": 32,
+    "maintenance": 1,
+    "max_age": 600,
+    "error_per_million": 5000,
+    "assembly_per_million": 650000,
+    "nucleation_per_million": 100,
+    "copying_enabled": true,
+    "neutral_copying": false,
+    "seeded_templates": true,
+    "resource_period": 1000,
+    "templates": [[0, 1, 0, 0, 1, 2], [1, 0, 1, 1, 0, 2]]
+  }
+}
