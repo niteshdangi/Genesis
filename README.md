@@ -28,7 +28,7 @@ The `examples/` directory contains the designed copying, variation, selection, a
 - [Consolidated research assessment](GENESIS_REVIEW_AND_ROADMAP.md)
 - [Implementation plan and material laws](GENESIS_MATTER_FIRST_IMPLEMENTATION_PLAN.md)
 
-Compact result JSON is committed under `research/`. Full event archives and checkpoints are generated under `runs/` and remain local because of their size. Older research documents contain local `runs/` paths; those refer to archived experiments, not files included in this public repository. Their protocols and source are included so the work can be inspected or repeated. The original private project knowledge dump is not published.
+Compact result JSON and one complete origin run/control pair are committed under [`research/`](research/README.md). The other full event archives and checkpoints remain local under `runs/` because of their size. Older research documents contain local `runs/` paths; those refer to archived experiments, not files included in this public repository. Their protocols and source are included so the work can be inspected or repeated. The original private project knowledge dump is not published.
 
 The material laws are versioned. The default is v2; v3 is an opt-in variation experiment. Earlier v1/v2 checkpoints and replay semantics are retained. Results from designed starting structures and initially unstructured matter are interpreted separately.
 
